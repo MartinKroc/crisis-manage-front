@@ -1,0 +1,27 @@
+<div class="top-container">
+  <div class="logo">
+    <img src="assets/logo.svg">
+  </div>
+  <div class="login">
+    <app-signin></app-signin>
+  </div>
+</div>
+
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker *ngFor="let cord of stations" [latitude]="cord.lat" [longitude]="cord.lng" (markerClick)="showDetails(cord)"></agm-marker>
+</agm-map>
+<div class="map-container">
+  <div class="map">
+  </div>
+  <div class="last-alerts">
+    <app-basic-chart></app-basic-chart>
+  </div>
+</div>
+<div class="info">
+  info
+</div>
+<div class="footer">
+  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+</div>
+
+

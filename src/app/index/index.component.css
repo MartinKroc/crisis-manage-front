@@ -1,0 +1,29 @@
+.top-container {
+  background-color: aliceblue;
+  margin: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  -webkit-box-shadow: 8px 8px 13px -5px #000000;
+  box-shadow: 8px 8px 13px -5px #000000;
+}
+.logo {
+  width: 300px;
+  height: 300px;
+}
+.login {
+  margin-left: 20px;
+}
+.map-container {
+  display: flex;
+  justify-content: center;
+}
+.info {
+  display: flex;
+}
+.footer {
+
+}
+agm-map {
+  height: 300px;
+}

@@ -1,0 +1,32 @@
+<div>
+  <h2>Zaloguj się</h2>
+  <form class="example-form" (submit)="Signin()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nazwa użytkownika</mat-label>
+      <input  matInput type="text"
+              id="username"
+              class="form-control"
+              name="name"
+              placeholder="name"
+              [(ngModel)]="model.username"
+              required/>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Hasło</mat-label>
+      <input  matInput type="text"
+              id="password"
+              class="form-control"
+              name="name"
+              placeholder="name"
+              [(ngModel)]="model.password"
+              required/>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type="submit">Zaloguj</button>
+  </form>
+  <br>
+  <h4>Nie masz konta? <a routerLink="/register">Zarejestruj się!</a></h4>
+</div>
+
+
