@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {ApiServiceService} from './shared/api-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +10,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'crisis-front';
   showFiller = true;
+  constructor(
+    public apiService: ApiServiceService) { }
 }

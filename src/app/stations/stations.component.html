@@ -1,1 +1,26 @@
-<p>stations works!</p>
+<!--<agm-map [latitude]="59.326242" [longitude]="17.8419719" >
+  <agm-marker [latitude]="59.326242" [longitude]="17.8419719">
+    <agm-info-window>Börk</agm-info-window>
+  </agm-marker>
+</agm-map>-->
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+  <agm-marker *ngFor="let cord of stations; index as stationId" [latitude]="cord.lat" [longitude]="cord.lng" [iconUrl]="url" (markerClick)="showDetails(cord)">
+    <agm-info-window>
+      <h3>{{cord.name}}</h3>
+      <button mat-raised-button color="primary" [routerLink]="['/stations', stationId]">Statystyki</button>
+    </agm-info-window>
+  </agm-marker>
+  <agm-marker *ngFor="let cord of weatherStations; index as stationId" [latitude]="cord.lat" [longitude]="cord.lng" (markerClick)="showDetails(cord)">
+    <agm-info-window>
+      <h3>{{cord.name}}</h3>
+      <button mat-raised-button color="primary" [routerLink]="['/stations/weather', stationId]">Statystyki</button>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>
+<div class="top-container">
+  <div class="logo">
+  </div>
+  <div class="login">
+  </div>
+
+</div>

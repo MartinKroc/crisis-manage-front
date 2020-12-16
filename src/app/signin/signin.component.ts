@@ -20,16 +20,19 @@ export class SigninComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.apiService.showmenu = false;
   }
   Signin(): void {
     this.apiService.signIn(this.model).subscribe(
       res => {
         console.log(res);
         localStorage.setItem('token', res.token);
+        this.apiService.showmenu = true;
         this.router.navigate(['/user']);
       },
       err => {
         /*alert('zły login lub hasło');*/
+        this.apiService.showmenu = true;
         this.router.navigate(['/user']);
       }
     );

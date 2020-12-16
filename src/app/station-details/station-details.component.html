@@ -1,0 +1,14 @@
+<div class="top-container">
+  <div>
+    <mat-list>
+      <mat-list-item>Nazwa stacji: {{station.name}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Poziom wody - zagrożenie wylaniem: {{station.warningLevel}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Poziom wody - poziom krytyczny: {{station.alertLevel}}</mat-list-item>
+    </mat-list>
+  </div>
+  <div class="logo">
+    <app-basic-chart [lineChartData]="lineChartData" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+  </div>
+</div>

@@ -26,6 +26,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { GoogleMapComponent } from './google-map/google-map.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { StationDetailsComponent } from './station-details/station-details.component';
+import { WeatherStationDetailsComponent } from './weather-station-details/weather-station-details.component';
 
 
 @NgModule({
@@ -39,7 +44,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     StationsComponent,
     UserAlertComponent,
     UserPanelComponent,
-    BasicChartComponent
+    BasicChartComponent,
+    GoogleMapComponent,
+    StationDetailsComponent,
+    WeatherStationDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +63,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
+    MatDividerModule,
+    MatListModule,
     ChartsModule,
     AgmCoreModule.forRoot({
       apiKey: ''

@@ -1,0 +1,24 @@
+<div class="header">
+  <mat-list>
+    <mat-divider></mat-divider>
+    <mat-list-item><h3>Nazwa stacji: {{station.name}}</h3></mat-list-item>
+    <mat-divider></mat-divider><br/>
+  </mat-list>
+</div>
+<div class="top-container">
+  <div>
+    <app-basic-chart [lineChartData]="lineChartDataTemp" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+  </div>
+  <div>
+    <app-basic-chart [lineChartData]="lineChartDataPressure" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+  </div>
+  <div>
+    <app-basic-chart [lineChartData]="lineChartDataSmog" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+  </div>
+  <div>
+    <app-basic-chart [lineChartData]="lineChartDataHumidity" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+  </div>
+</div>
+
+
+

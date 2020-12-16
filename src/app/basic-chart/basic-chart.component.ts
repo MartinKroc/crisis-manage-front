@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import * as pluginAnnotations from 'chart.js';
@@ -10,10 +10,13 @@ import * as pluginAnnotations from 'chart.js';
 })
 export class BasicChartComponent implements OnInit {
 
-  public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' }
+  @Input() lineChartData: ChartDataSets;
+  @Input() lineChartLabels: Label;
+
+/*  public lineChartData: ChartDataSets[] = [
+    { data: this.chartWaterLevel, label: 'Series A' }
   ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];*/
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
     scales: {

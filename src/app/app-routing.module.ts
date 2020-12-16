@@ -7,6 +7,8 @@ import {ManagePanelComponent} from './manage-panel/manage-panel.component';
 import {StationsComponent} from './stations/stations.component';
 import {UserPanelComponent} from './user-panel/user-panel.component';
 import {UserAlertComponent} from './user-alert/user-alert.component';
+import {StationDetailsComponent} from './station-details/station-details.component';
+import {WeatherStationDetailsComponent} from './weather-station-details/weather-station-details.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
   {
     path: 'stations',
     component: StationsComponent
+  },
+  {
+    path: 'stations/:stationId',
+    component: StationDetailsComponent
+  },
+  {
+    path: 'stations/weather/:stationId',
+    component: WeatherStationDetailsComponent
   },
   {
     path: 'user',
