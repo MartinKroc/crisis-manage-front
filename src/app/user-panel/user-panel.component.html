@@ -1,8 +1,9 @@
-<div class="top-container">
-  <div class="logo">
-    <img src="assets/logo.svg">
-  </div>
-  <div class="login">
-    <h2>some shit</h2>
-  </div>
-</div>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+  <agm-marker *ngFor="let cord of alertPropositions" [latitude]="cord.lat" [longitude]="cord.lng" (markerClick)="showDetails(cord)">
+    <agm-info-window>
+      <h3>{{cord.description}}</h3>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>
+<app-alert-propositions-table [alerts]="alertPropositions"></app-alert-propositions-table>
+<button mat-button (click)="addProposition()">Dodaj propozycję</button>

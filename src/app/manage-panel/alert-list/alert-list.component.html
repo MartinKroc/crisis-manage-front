@@ -1,0 +1,72 @@
+<table mat-table [dataSource]="alerts.alerts" class="mat-elevation-z8">
+  <ng-container matColumnDef="dangerDescription">
+    <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.dangerDescription}} </td>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Opis </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.alertsdescription}} </td>
+  </ng-container>
+  <ng-container matColumnDef="publishDate">
+    <th mat-header-cell *matHeaderCellDef> Data dodania </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.publishDate}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dangerScale">
+    <th mat-header-cell *matHeaderCellDef> Skala zagrożenia </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.dangerScale}} </td>
+  </ng-container>
+  <ng-container matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef> Aktywne </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.active}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<table mat-table [dataSource]="alerts.waterAlert" class="mat-elevation-z8">
+  <ng-container matColumnDef="dangerDescription">
+    <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.dangerDescription}} </td>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Opis </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.alertsdescription}} </td>
+  </ng-container>
+  <ng-container matColumnDef="publishDate">
+    <th mat-header-cell *matHeaderCellDef> Data dodania </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.publishDate}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dangerScale">
+    <th mat-header-cell *matHeaderCellDef> Skala zagrożenia </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.dangerScale}} </td>
+  </ng-container>
+  <ng-container matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef> Aktywne </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.active}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<table mat-table [dataSource]="alerts.weatherAlert" class="mat-elevation-z8">
+  <ng-container matColumnDef="dangerDescription">
+    <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.dangerDescription}} </td>
+  </ng-container>
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Opis </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.alertsdescription}} </td>
+  </ng-container>
+  <ng-container matColumnDef="publishDate">
+    <th mat-header-cell *matHeaderCellDef> Data dodania </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.publishDate}} </td>
+  </ng-container>
+  <ng-container matColumnDef="dangerScale">
+    <th mat-header-cell *matHeaderCellDef> Skala zagrożenia </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.dangerScale}} </td>
+  </ng-container>
+  <ng-container matColumnDef="active">
+    <th mat-header-cell *matHeaderCellDef> Aktywne </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.active}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

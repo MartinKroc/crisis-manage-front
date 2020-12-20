@@ -9,6 +9,7 @@ import {UserPanelComponent} from './user-panel/user-panel.component';
 import {UserAlertComponent} from './user-alert/user-alert.component';
 import {StationDetailsComponent} from './station-details/station-details.component';
 import {WeatherStationDetailsComponent} from './weather-station-details/weather-station-details.component';
+import {AuthGuard} from './auth.guard';
 
 const routes: Routes = [
   {
@@ -26,27 +27,33 @@ const routes: Routes = [
   },
   {
     path: 'panel',
-    component: ManagePanelComponent
+    component: ManagePanelComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'stations',
-    component: StationsComponent
+    component: StationsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'stations/:stationId',
-    component: StationDetailsComponent
+    component: StationDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'stations/weather/:stationId',
-    component: WeatherStationDetailsComponent
+    component: WeatherStationDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user',
-    component: UserPanelComponent
+    component: UserPanelComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user/alert',
-    component: UserAlertComponent
+    component: UserAlertComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

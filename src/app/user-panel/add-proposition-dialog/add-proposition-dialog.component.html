@@ -1,0 +1,27 @@
+<app-google-map (pointedLat)="setLat($event)" (pointedLng)="setLng($event)">
+</app-google-map>
+<div>
+  <form class="example-form" (submit)="addAlertProposition()">
+    <mat-form-field appearance="fill">
+      <mat-label>Opis</mat-label>
+      <input  matInput type="text"
+              id="description"
+              class="form-control"
+              name="name"
+              placeholder="name"
+              [(ngModel)]="model.description"
+              required/>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Rodzaj zdarzenia</mat-label>
+      <mat-select [(ngModel)]="model.dangerTypeId" name="danger">
+        <mat-option *ngFor="let danger of dangerTypes" [value]="danger.id">
+          {{danger.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type="submit">Dodaj</button>
+  </form>
+</div>

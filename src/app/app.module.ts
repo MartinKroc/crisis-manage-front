@@ -31,6 +31,17 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { StationDetailsComponent } from './station-details/station-details.component';
 import { WeatherStationDetailsComponent } from './weather-station-details/weather-station-details.component';
+import {MatTableModule} from '@angular/material/table';
+import { AlertPropositionsTableComponent } from './alert-propositions-table/alert-propositions-table.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddPropositionDialogComponent } from './user-panel/add-proposition-dialog/add-proposition-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
+import { BarChartComponent } from './manage-panel/bar-chart/bar-chart.component';
+import { AlertListComponent } from './manage-panel/alert-list/alert-list.component';
+import { AlertSuggestionsListComponent } from './manage-panel/alert-suggestions-list/alert-suggestions-list.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { AddAlertDialogComponent } from './manage-panel/add-alert-dialog/add-alert-dialog.component';
 
 
 @NgModule({
@@ -47,29 +58,41 @@ import { WeatherStationDetailsComponent } from './weather-station-details/weathe
     BasicChartComponent,
     GoogleMapComponent,
     StationDetailsComponent,
-    WeatherStationDetailsComponent
+    WeatherStationDetailsComponent,
+    AlertPropositionsTableComponent,
+    AddPropositionDialogComponent,
+    BarChartComponent,
+    AlertListComponent,
+    AlertSuggestionsListComponent,
+    AddAlertDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatSliderModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatListModule,
-    ChartsModule,
-    AgmCoreModule.forRoot({
-      apiKey: ''
-    }),
-  ],
+  entryComponents: [AddPropositionDialogComponent, AddAlertDialogComponent],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSliderModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatDividerModule,
+        MatListModule,
+        MatTableModule,
+        MatDialogModule,
+        MatSelectModule,
+        MatPaginatorModule,
+        MatSortModule,
+        ChartsModule,
+        AgmCoreModule.forRoot({
+            apiKey: ''
+        }),
+    ],
   providers: [AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

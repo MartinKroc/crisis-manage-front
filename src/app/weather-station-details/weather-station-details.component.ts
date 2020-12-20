@@ -38,7 +38,7 @@ export class WeatherStationDetailsComponent implements OnInit {
   }
   public getStation(id): void {
     let numb = Number(id);
-    numb+=10;
+    numb+=1;
     this.apiService.getWeatherStationById(numb).subscribe(
       res => {
         this.station = res;
@@ -50,7 +50,7 @@ export class WeatherStationDetailsComponent implements OnInit {
   }
   public getStationMeasures(id): void {
     let numb = Number(id);
-    numb+=10;
+    numb+=1;
     this.apiService.getWeatherMeasuresByStationId(numb).subscribe(
       res => {
         this.measures = res;

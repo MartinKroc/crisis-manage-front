@@ -1,5 +1,3 @@
-<!--
-<agm-map [latitude]="lat" [longitude]="lng">
-  <agm-marker *ngFor="let cord of stations" [latitude]="cord.lat" [longitude]="cord.lng" (markerClick)="showDetails(cord)"></agm-marker>
+<agm-map (mapClick)="changeCords($event)" [latitude]="lat" [longitude]="lng" [zoom]="12">
+  <agm-marker [latitude]="lt" [longitude]="ln"></agm-marker>
 </agm-map>
--->

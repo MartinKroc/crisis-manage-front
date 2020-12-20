@@ -1,6 +1,6 @@
 <div>
   <h2>Zaloguj się</h2>
-  <form class="example-form" (submit)="Signin()">
+  <form class="example-form" (submit)="validateForm()">
     <mat-form-field appearance="fill">
       <mat-label>Nazwa użytkownika</mat-label>
       <input  matInput type="text"
@@ -26,6 +26,8 @@
     <button mat-raised-button type="submit">Zaloguj</button>
   </form>
   <br>
+  <p *ngIf="loginErrorUsername">Podaj login</p>
+  <p *ngIf="loginErrorPassword">Podaj hasło</p>
   <h4>Nie masz konta? <a routerLink="/register">Zarejestruj się!</a></h4>
 </div>
 

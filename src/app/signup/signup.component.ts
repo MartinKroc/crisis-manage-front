@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/']);
       },
       err => {
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
       }
     );
   }

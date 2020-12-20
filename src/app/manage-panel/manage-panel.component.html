@@ -1,1 +1,10 @@
-<p>manage-panel works!</p>
+<app-alert-list [alerts]="alerts"></app-alert-list>
+<button mat-button (click)="addAlert()">Dodaj alert</button>
+<div class="top-container">
+  <div class="bar">
+    <app-bar-chart [barChartData]="barChartData" [barChartLabels]="barChartLabels"></app-bar-chart>
+  </div>
+  <div class="top-propositions">
+  </div>
+</div>
+<app-alert-suggestions-list></app-alert-suggestions-list>

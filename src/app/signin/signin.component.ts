@@ -13,6 +13,8 @@ export class SigninComponent implements OnInit {
     username: '',
     password: ''
   };
+  loginErrorUsername = false;
+  loginErrorPassword = false;
 
   constructor(
     private apiService: ApiServiceService,
@@ -22,6 +24,18 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.showmenu = false;
   }
+  validateForm(): void {
+    if (this.model.username === '') {
+      this.loginErrorUsername = true;
+    }
+    else if (this.model.password === '') {
+      this.loginErrorPassword = true;
+    }
+    else {
+      this.Signin();
+    }
+  }
+
   Signin(): void {
     this.apiService.signIn(this.model).subscribe(
       res => {
@@ -31,12 +45,10 @@ export class SigninComponent implements OnInit {
         this.router.navigate(['/user']);
       },
       err => {
-        /*alert('zły login lub hasło');*/
-        this.apiService.showmenu = true;
-        this.router.navigate(['/user']);
+        alert('zły login lub hasło');
       }
     );
-  }
+  };
 }
 export interface SignInViewModel {
   username: string;
