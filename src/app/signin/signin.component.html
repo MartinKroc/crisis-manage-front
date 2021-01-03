@@ -14,7 +14,7 @@
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Hasło</mat-label>
-      <input  matInput type="text"
+      <input  matInput type="password"
               id="password"
               class="form-control"
               name="name"
@@ -26,8 +26,8 @@
     <button mat-raised-button type="submit">Zaloguj</button>
   </form>
   <br>
-  <p *ngIf="loginErrorUsername">Podaj login</p>
-  <p *ngIf="loginErrorPassword">Podaj hasło</p>
+  <p *ngIf="loginErrorUsername" style="color: red;">Podaj login</p>
+  <p *ngIf="loginErrorPassword" style="color: red;">Podaj hasło</p>
   <h4>Nie masz konta? <a routerLink="/register">Zarejestruj się!</a></h4>
 </div>
 

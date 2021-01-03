@@ -1,10 +1,24 @@
-<app-alert-list [alerts]="alerts"></app-alert-list>
-<button mat-button (click)="addAlert()">Dodaj alert</button>
 <div class="top-container">
-  <div class="bar">
-    <app-bar-chart [barChartData]="barChartData" [barChartLabels]="barChartLabels"></app-bar-chart>
-  </div>
-  <div class="top-propositions">
+  <div class="alerts">
+    <app-alert-list [alerts]="alerts"></app-alert-list>
   </div>
 </div>
-<app-alert-suggestions-list></app-alert-suggestions-list>
+<br/>
+  <div class="top-container">
+    <h2>Statystyki</h2>
+    <div class="bar">
+      <app-bar-chart [barChartData]="barChartData" [barChartLabels]="barChartLabels"></app-bar-chart>
+    </div>
+    <div class="top-propositions">
+    </div>
+  </div>
+<br/>
+  <div class="top-container">
+    <div class="alert-sug">
+      <h2>Powiadomienia ze stacji pomiarowych</h2>
+      <app-alert-suggestions-list></app-alert-suggestions-list>
+    </div>
+  </div>
+
+
+

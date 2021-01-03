@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-label>Filter</mat-label>
+  <mat-label>Wyszukaj pozycje</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Wpisz coś" #input>
 </mat-form-field>
 <div class="mat-elevation-z8">
@@ -14,7 +14,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
-      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.date | date:"dd/MM/yyyy, HH:mm"}} </td>
     </ng-container>
 
     <!-- Weight Column -->

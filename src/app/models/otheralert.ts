@@ -1,4 +1,5 @@
 export class OtherAlert {
+  id: number;
   publishDate: string;
   isActive: boolean;
   lat: number;

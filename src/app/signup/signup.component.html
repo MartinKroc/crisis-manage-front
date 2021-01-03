@@ -1,25 +1,29 @@
 <div class="top-container">
   <div class="register">
     <h2>Zarejestruj się</h2>
-    <form name="form" class="example-form" (submit)="Signup()">
+    <p *ngIf="usernameError" style="color: red;">Podaj login</p>
+    <p *ngIf="passwordError" style="color: red;">Podaj hasło</p>
+    <p *ngIf="emailError" style="color: red;">Podaj email</p>
+    <p *ngIf="phoneError" style="color: red;">Podaj numer telefonu</p>
+    <form name="form" class="example-form" (submit)="validateForm()">
       <mat-form-field appearance="fill">
         <mat-label>Nazwa użytkownika</mat-label>
         <input  matInput type="text"
                 id="username"
                 class="form-control"
                 name="name"
-                placeholder="name"
+                placeholder=""
                 [(ngModel)]="model.username"
                 required/>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>Hasło</mat-label>
-        <input  matInput type="text"
+        <input  matInput type="password"
                 id="password"
                 class="form-control"
                 name="name"
-                placeholder="name"
+                placeholder=""
                 [(ngModel)]="model.password"
                 required/>
       </mat-form-field>
@@ -30,18 +34,18 @@
                 id="phone"
                 class="form-control"
                 name="name"
-                placeholder="name"
+                placeholder="9 cyfr"
                 [(ngModel)]="model.phone"
                 required/>
       </mat-form-field>
       <br>
       <mat-form-field appearance="fill">
         <mat-label>E-mail</mat-label>
-        <input  matInput type="text"
+        <input  matInput type="email"
                 id="email"
                 class="form-control"
                 name="name"
-                placeholder="name"
+                placeholder="pat@example.com"
                 [(ngModel)]="model.email"
                 required/>
       </mat-form-field>

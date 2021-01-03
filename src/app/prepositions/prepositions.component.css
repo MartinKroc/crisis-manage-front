@@ -1,0 +1,12 @@
+.top-container {
+  background-color: aliceblue;
+  margin: 3%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  -webkit-box-shadow: 8px 8px 13px -5px #000000;
+  box-shadow: 8px 8px 13px -5px #000000;
+}
+agm-map {
+  height: 500px;
+}

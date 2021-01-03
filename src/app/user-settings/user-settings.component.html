@@ -1,0 +1,32 @@
+<div class="top-container">
+  <div class="register">
+    <h2>Zmień dane kontaktowe</h2>
+    <form name="form" class="example-form" (submit)="validateForm()">
+      <mat-form-field appearance="fill">
+        <mat-label>Telefon</mat-label>
+        <input  matInput type="text"
+                id="phone"
+                class="form-control"
+                name="name"
+                placeholder="name"
+                [(ngModel)]="model.phone"
+                required/>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input  matInput type="text"
+                id="email"
+                class="form-control"
+                name="name"
+                placeholder="name"
+                [(ngModel)]="model.email"
+                required/>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit">Potwierdź</button>
+    </form>
+    <p *ngIf="errorEmail" style="color: red;">Podaj E-mail</p>
+    <p *ngIf="errorPhone" style="color: red;">Podaj numer telefonu</p>
+  </div>
+</div>

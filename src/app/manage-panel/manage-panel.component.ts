@@ -4,7 +4,7 @@ import {ChartDataSets} from 'chart.js';
 import {Label} from 'ng2-charts';
 import {Alert} from '../models/alert';
 import {MatDialog} from '@angular/material/dialog';
-import {AddPropositionDialogComponent} from '../user-panel/add-proposition-dialog/add-proposition-dialog.component';
+import {AddPropositionDialogComponent} from '../prepositions/add-proposition-dialog/add-proposition-dialog.component';
 import {AddAlertDialogComponent} from './add-alert-dialog/add-alert-dialog.component';
 
 @Component({

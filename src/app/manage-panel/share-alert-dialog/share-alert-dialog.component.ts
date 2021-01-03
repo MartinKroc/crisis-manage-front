@@ -1,0 +1,41 @@
+import {Component, Inject, Input, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {SendAlertViewModel} from '../alert-list/alert-list.component';
+import {ApiServiceService} from '../../shared/api-service.service';
+
+@Component({
+  selector: 'app-share-alert-dialog',
+  templateUrl: './share-alert-dialog.component.html',
+  styleUrls: ['./share-alert-dialog.component.css']
+})
+export class ShareAlertDialogComponent implements OnInit {
+
+  selectedType: string;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {alert: SendAlertViewModel}, private apiService: ApiServiceService) { }
+
+  ngOnInit(): void {
+  }
+  public sendAlertByEmailSms(): void {
+    console.log(this.data);
+    if (this.selectedType === 'email') {
+      this.apiService.sendAlertByMail(this.data.alert).subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          alert('error has occured');
+        }
+      );
+    }
+    else {
+      this.apiService.sendAlertBySms(this.data.alert).subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+          alert('error has occured');
+        }
+      );
+    }
+  }
+}

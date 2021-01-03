@@ -1,8 +1,3 @@
-<!--<agm-map [latitude]="59.326242" [longitude]="17.8419719" >
-  <agm-marker [latitude]="59.326242" [longitude]="17.8419719">
-    <agm-info-window>Börk</agm-info-window>
-  </agm-marker>
-</agm-map>-->
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
   <agm-marker *ngFor="let cord of stations; index as stationId" [latitude]="cord.lat" [longitude]="cord.lng" [iconUrl]="url" (markerClick)="showDetails(cord)">
     <agm-info-window>

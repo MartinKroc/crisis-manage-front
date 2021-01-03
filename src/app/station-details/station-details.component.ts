@@ -48,8 +48,19 @@ export class StationDetailsComponent implements OnInit {
       res => {
         this.measures = res;
         this.measures.forEach((el) => {
+          const temp3 = new Date(Date.parse(el.date));
+          const temp = el.date.slice(0, 10);
+          let hh: string = temp3.getHours().toString();
+          let mm: string = temp3.getMinutes().toString();
+          if (temp3.getHours() < 10) {
+            hh = '0' + temp3.getHours().toString();
+          }
+          if (temp3.getMinutes() < 10) {
+            mm = '0' + temp3.getMinutes().toString();
+          }
+          const temp2 = `${temp}, ${hh}:${mm}`;
           this.chartData.push(el.waterLevel);
-          this.chartLabels.push(el.date);
+          this.chartLabels.push(temp2);
         });
         this.lineChartData = [
           { data: this.chartData, label: 'Poziom wody' }

@@ -32,9 +32,9 @@ import {MatListModule} from '@angular/material/list';
 import { StationDetailsComponent } from './station-details/station-details.component';
 import { WeatherStationDetailsComponent } from './weather-station-details/weather-station-details.component';
 import {MatTableModule} from '@angular/material/table';
-import { AlertPropositionsTableComponent } from './alert-propositions-table/alert-propositions-table.component';
+import { AlertPropositionsTableComponent } from './prepositions/alert-propositions-table/alert-propositions-table.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { AddPropositionDialogComponent } from './user-panel/add-proposition-dialog/add-proposition-dialog.component';
+import { AddPropositionDialogComponent } from './prepositions/add-proposition-dialog/add-proposition-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
 import { BarChartComponent } from './manage-panel/bar-chart/bar-chart.component';
 import { AlertListComponent } from './manage-panel/alert-list/alert-list.component';
@@ -42,6 +42,16 @@ import { AlertSuggestionsListComponent } from './manage-panel/alert-suggestions-
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { AddAlertDialogComponent } from './manage-panel/add-alert-dialog/add-alert-dialog.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { ShareAlertDialogComponent } from './manage-panel/share-alert-dialog/share-alert-dialog.component';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { PrepositionsComponent } from './prepositions/prepositions.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { ShowStatusPipe } from './shared/pipes/show-status.pipe';
+import { ShowVerificationPipe } from './shared/pipes/show-verification.pipe';
+import { AlertTypesPipe } from './shared/pipes/alert-types.pipe';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -64,9 +74,16 @@ import { AddAlertDialogComponent } from './manage-panel/add-alert-dialog/add-ale
     BarChartComponent,
     AlertListComponent,
     AlertSuggestionsListComponent,
-    AddAlertDialogComponent
+    AddAlertDialogComponent,
+    UserSettingsComponent,
+    ShareAlertDialogComponent,
+    ErrorDialogComponent,
+    PrepositionsComponent,
+    ShowStatusPipe,
+    ShowVerificationPipe,
+    AlertTypesPipe
   ],
-  entryComponents: [AddPropositionDialogComponent, AddAlertDialogComponent],
+  entryComponents: [AddPropositionDialogComponent, AddAlertDialogComponent, ShareAlertDialogComponent, ErrorDialogComponent],
     imports: [
         BrowserModule,
         HttpClientModule,
@@ -88,6 +105,9 @@ import { AddAlertDialogComponent } from './manage-panel/add-alert-dialog/add-ale
         MatSelectModule,
         MatPaginatorModule,
         MatSortModule,
+        MatCardModule,
+        MatExpansionModule,
+        MatTabsModule,
         ChartsModule,
         AgmCoreModule.forRoot({
             apiKey: ''

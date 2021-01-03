@@ -1,16 +1,17 @@
-.example-container {
+/*.example-container {
   background-color: #744fbd;
+}*/
+.example-container {
+  position: absolute;
+  background-color: #744fbd;
+  top: 60px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
 }
-
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
 .example-sidenav {
   padding: 20px;
+  height: 100vh;
 }
 a {
   text-decoration: none;

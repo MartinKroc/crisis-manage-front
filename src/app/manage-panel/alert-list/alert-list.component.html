@@ -1,3 +1,7 @@
+<div class="add-alert">
+  <h2>Inne alerty: </h2>
+  <button mat-raised-button color="primary" (click)="addAlert()">Dodaj alert</button>
+</div>
 <table mat-table [dataSource]="alerts.alerts" class="mat-elevation-z8">
   <ng-container matColumnDef="dangerDescription">
     <th mat-header-cell *matHeaderCellDef> Nazwa </th>
@@ -5,11 +9,11 @@
   </ng-container>
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef> Opis </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.alertsdescription}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.description}} </td>
   </ng-container>
   <ng-container matColumnDef="publishDate">
     <th mat-header-cell *matHeaderCellDef> Data dodania </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.publishDate}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.publishDate | date:"dd/MM/yyyy, HH:mm"}} </td>
   </ng-container>
   <ng-container matColumnDef="dangerScale">
     <th mat-header-cell *matHeaderCellDef> Skala zagrożenia </th>
@@ -17,23 +21,29 @@
   </ng-container>
   <ng-container matColumnDef="active">
     <th mat-header-cell *matHeaderCellDef> Aktywne </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.active}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button mat-raised-button color="warn" (click)="changeAlertStatus('OTHER', alert.id)">Zmień</button></td>
+  </ng-container>
+  <ng-container matColumnDef="send">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td mat-cell *matCellDef="let alert"><button mat-raised-button color="warn" (click)="openDialog('OTHER', alert.id)">Udostępnij</button></td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<br/>
+<h2>Alerty hydrologiczne: </h2>
 <table mat-table [dataSource]="alerts.waterAlert" class="mat-elevation-z8">
   <ng-container matColumnDef="dangerDescription">
     <th mat-header-cell *matHeaderCellDef> Nazwa </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.dangerDescription}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.description}} </td>
   </ng-container>
   <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef> Opis </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.alertsdescription}} </td>
+    <th mat-header-cell *matHeaderCellDef> Stacja </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.waterStationName}} </td>
   </ng-container>
   <ng-container matColumnDef="publishDate">
     <th mat-header-cell *matHeaderCellDef> Data dodania </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.publishDate}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.publishDate | date:"dd/MM/yyyy, HH:mm"}} </td>
   </ng-container>
   <ng-container matColumnDef="dangerScale">
     <th mat-header-cell *matHeaderCellDef> Skala zagrożenia </th>
@@ -41,23 +51,29 @@
   </ng-container>
   <ng-container matColumnDef="active">
     <th mat-header-cell *matHeaderCellDef> Aktywne </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.active}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button mat-raised-button color="warn" (click)="changeAlertStatus('WATER', alert.id)">Zmień</button></td>
+  </ng-container>
+  <ng-container matColumnDef="send">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td mat-cell *matCellDef="let alert"><button mat-raised-button color="warn" (click)="openDialog('WATER', alert.id)">Udostępnij</button></td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<br/>
+<h2>Alerty meteo: </h2>
 <table mat-table [dataSource]="alerts.weatherAlert" class="mat-elevation-z8">
   <ng-container matColumnDef="dangerDescription">
     <th mat-header-cell *matHeaderCellDef> Nazwa </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.dangerDescription}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.description}} </td>
   </ng-container>
   <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef> Opis </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.alertsdescription}} </td>
+    <th mat-header-cell *matHeaderCellDef> Stacja </th>
+    <td mat-cell *matCellDef="let alert"> {{alert.weatherStationName}} </td>
   </ng-container>
   <ng-container matColumnDef="publishDate">
     <th mat-header-cell *matHeaderCellDef> Data dodania </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.publishDate}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.publishDate | date:"dd/MM/yyyy, HH:mm"}} </td>
   </ng-container>
   <ng-container matColumnDef="dangerScale">
     <th mat-header-cell *matHeaderCellDef> Skala zagrożenia </th>
@@ -65,7 +81,11 @@
   </ng-container>
   <ng-container matColumnDef="active">
     <th mat-header-cell *matHeaderCellDef> Aktywne </th>
-    <td mat-cell *matCellDef="let alert"> {{alert.active}} </td>
+    <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button mat-raised-button color="warn" (click)="changeAlertStatus('WEATHER', alert.id)">Zmień</button></td>
+  </ng-container>
+  <ng-container matColumnDef="send">
+    <th mat-header-cell *matHeaderCellDef>  </th>
+    <td mat-cell *matCellDef="let alert"><button mat-raised-button color="warn" *ngIf="alert.active === true" (click)="openDialog('WEATHER', alert.id)">Udostępnij</button></td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

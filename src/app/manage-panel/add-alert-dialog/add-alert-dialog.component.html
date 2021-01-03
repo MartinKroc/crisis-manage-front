@@ -1,1 +1,84 @@
-<p>add-alert-dialog works!</p>
+<div>
+  <form class="example-form" (submit)="AddAlert()">
+    <mat-form-field appearance="fill">
+      <mat-label>Rodzaj zdarzenia</mat-label>
+      <mat-select [(ngModel)]="model.dangerTypeId" name="danger">
+        <mat-option *ngFor="let danger of dangerTypes" [value]="danger.id">
+          {{danger.description}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="model.dangerTypeId==1">
+      <mat-form-field appearance="fill">
+        <mat-label>Opis</mat-label>
+        <input  matInput type="text"
+                id="descriptionWater"
+                class="form-control"
+                name="name"
+                placeholder="name"
+                [(ngModel)]="model.description"
+                required/>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Stacja</mat-label>
+        <mat-select [(ngModel)]="model.waterStationId" name="danger">
+          <mat-option *ngFor="let station of waterStations" [value]="station.id">
+            {{station.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit">Dodaj</button>
+    </div>
+    <div *ngIf="model.dangerTypeId==2 || model.dangerTypeId==3 || model.dangerTypeId==5">
+      <mat-form-field appearance="fill">
+        <mat-label>Opis</mat-label>
+        <input  matInput type="text"
+                id="descriptionWeather"
+                class="form-control"
+                name="name"
+                placeholder="name"
+                [(ngModel)]="model.description"
+                required/>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Stacja</mat-label>
+        <mat-select [(ngModel)]="model.waterStationId" name="danger">
+          <mat-option *ngFor="let station of weatherStations" [value]="station.id">
+            {{station.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit">Dodaj</button>
+    </div>
+    <div *ngIf="model.dangerTypeId==4 || model.dangerTypeId==6">
+      <app-google-map (pointedLat)="setLat($event)" (pointedLng)="setLng($event)">
+      </app-google-map>
+      <mat-form-field appearance="fill">
+        <mat-label>Opis</mat-label>
+        <input  matInput type="text"
+                id="descriptionOther"
+                class="form-control"
+                name="name"
+                placeholder="name"
+                [(ngModel)]="model.description"
+                required/>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button type="submit">Dodaj</button>
+    </div>
+<!--    <mat-form-field appearance="fill">
+      <mat-label>Opis</mat-label>
+      <input  matInput type="text"
+              id="description"
+              class="form-control"
+              name="name"
+              placeholder="name"
+              [(ngModel)]="model.description"
+              required/>
+    </mat-form-field>-->
+  </form>
+</div>

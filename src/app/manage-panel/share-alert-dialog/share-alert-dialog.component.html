@@ -1,0 +1,15 @@
+<div>
+  <form class="example-form" (submit)="sendAlertByEmailSms()">
+    <mat-form-field appearance="fill">
+      <mat-label>Wybierz rodzaj powiadomienia</mat-label>
+      <mat-select [(ngModel)]="selectedType" name="danger">
+        <mat-option value="email">E-mail</mat-option>
+        <mat-option value="sms">Wiadomość SMS</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <p>Typ zdarzenia: {{data.alert.alertType | alertTypes}}</p>
+    <p>ID: {{data.alert.alertId}}</p>
+    <button mat-raised-button type="submit">Potwierdź</button>
+  </form>
+</div>

@@ -1,47 +1,31 @@
-<!--<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Centrum zarządzania kryzysowego</span>
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  <span>Centrum zarządzania antykryzysowego</span>
   <span class="example-spacer"></span>
 </mat-toolbar>
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
-</mat-drawer-container>
-<router-outlet></router-outlet>-->
-
-
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-toolbar>
-    <div *ngIf="apiService.loggedIn()">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
-    <span>Centrum zarządzania kryzysowego</span>
-    <span class="example-spacer"></span>
-  </mat-toolbar>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <mat-list>
-      <mat-list-item><a routerLink="user">Panel użytkownika</a></mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item><a routerLink="panel">Panel pracownika</a></mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item><a routerLink="stations">Stacje Pogodowe</a></mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item><a routerLink="settings">Ustawienia profilu/powiadomień</a></mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item><a routerLink="prepositions">Propozycje ostrzeżeń</a></mat-list-item>
-      <mat-list-item><a *ngIf="apiService.loggedIn()" routerLink="" (click)="apiService.logoutUser()">Wyloguj się</a></mat-list-item>
-    </mat-list>
-  </mat-drawer>
-  <router-outlet></router-outlet>
-</mat-drawer-container>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
+                 [fixedInViewport]="false" [fixedTopGap]="0"
+                 [fixedBottomGap]="0">
+      <div *ngIf="apiService.loggedIn()">
+      <mat-list>
+        <mat-list-item *ngIf="role === 'ROLE_USER'"><a routerLink="user">Panel użytkownika</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngIf="role === 'ROLE_EMPLOYEE'"><a routerLink="panel">Panel pracownika</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngIf="role === 'ROLE_EMPLOYEE'"><a routerLink="stations">Stacje Pogodowe</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngIf="role === 'ROLE_USER'"><a routerLink="user/settings">Ustawienia profilu/powiadomień</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngIf="role === 'ROLE_USER' || role === 'ROLE_EMPLOYEE'"><a routerLink="prepositions">Propozycje ostrzeżeń</a></mat-list-item>
+        <mat-list-item><a *ngIf="apiService.loggedIn()" routerLink="" (click)="apiService.logoutUser()">Wyloguj się</a></mat-list-item>
+      </mat-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 

@@ -10,6 +10,8 @@ import {UserAlertComponent} from './user-alert/user-alert.component';
 import {StationDetailsComponent} from './station-details/station-details.component';
 import {WeatherStationDetailsComponent} from './weather-station-details/weather-station-details.component';
 import {AuthGuard} from './auth.guard';
+import {UserSettingsComponent} from './user-settings/user-settings.component';
+import {PrepositionsComponent} from './prepositions/prepositions.component';
 
 const routes: Routes = [
   {
@@ -28,32 +30,63 @@ const routes: Routes = [
   {
     path: 'panel',
     component: ManagePanelComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_EMPLOYEE'
+    }
   },
   {
     path: 'stations',
     component: StationsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_EMPLOYEE'
+    }
   },
   {
     path: 'stations/:stationId',
     component: StationDetailsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_EMPLOYEE'
+    }
   },
   {
     path: 'stations/weather/:stationId',
     component: WeatherStationDetailsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_EMPLOYEE'
+    }
   },
   {
     path: 'user',
     component: UserPanelComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_USER'
+    }
   },
   {
     path: 'user/alert',
     component: UserAlertComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'user/settings',
+    component: UserSettingsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_USER'
+    }
+  },
+  {
+    path: 'prepositions',
+    component: PrepositionsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      expectedRole: 'ROLE_USER'
+    },
   }
 ];
 

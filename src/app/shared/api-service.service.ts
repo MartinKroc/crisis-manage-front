@@ -11,10 +11,14 @@ import {WeatherStation} from '../models/weatherstation';
 import {Watermeasureimgw} from '../models/watermeasureimgw';
 import {AlertProposition} from '../models/alertproposition';
 import {Danger} from '../models/danger';
-import {AlertPropositionViewModel} from '../user-panel/add-proposition-dialog/add-proposition-dialog.component';
+import {AlertPropositionViewModel} from '../prepositions/add-proposition-dialog/add-proposition-dialog.component';
 import {Alert} from '../models/alert';
 import {AlertSuggestion} from '../models/alertsuggestion';
 import {AlertStat} from '../models/alertstat';
+import {UserSettingsViewModel} from '../user-settings/user-settings.component';
+import {AlertViewModel} from '../manage-panel/add-alert-dialog/add-alert-dialog.component';
+import {SendAlertViewModel} from '../manage-panel/alert-list/alert-list.component';
+import {UserModel} from '../models/usermodel';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +34,7 @@ export class ApiServiceService {
   private WEATHER_MEASURE_URL = this.BASE_URL + '/api/measure/weather';
   private ALERT_PROPOSITION_URL = this.BASE_URL + '/api/proposition';
   private ALERT_URL = this.BASE_URL + '/api/alert';
+  private USER_SETTINGS_URL = this.BASE_URL + '/api/user/settings';
   public showmenu = true;
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -42,6 +47,10 @@ export class ApiServiceService {
     return this.http.post(this.SIGNIN_URL, user);
   }
 
+  getUser(): Observable<UserModel> {
+    return this.http.get<UserModel>(this.BASE_URL + '/api/user/users');
+  }
+
   loggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -52,6 +61,7 @@ export class ApiServiceService {
 
   logoutUser() {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.showmenu = false;
     this.router.navigate(['']);
   }
@@ -73,6 +83,7 @@ export class ApiServiceService {
   getWeatherStationById(id): Observable<WeatherStation> {
     return this.http.get<WeatherStation>(this.WEATHER_STATION_URL + '/' + id);
   }
+
   // MEASURES
   getWaterMeasuresByStationId(id): Observable<WaterMeasure[]> {
     return this.http.get<WaterMeasure[]>(this.WATER_MEASURE_URL + '/' + id);
@@ -112,13 +123,17 @@ export class ApiServiceService {
   getAlerts(): Observable<Alert[]> {
     return this.http.get<Alert[]>(this.ALERT_URL);
   }
-/*  postAlert(alert: AlertViewModel): Observable<any> {
+  postAlert(alert: AlertViewModel): Observable<any> {
     return this.http.post(this.ALERT_URL, alert);
-  }*/
+  }
 
-/*  sendAlertByMail(sendAlert: SendAlertViewModel): Observable<any> {
+  sendAlertByMail(sendAlert: SendAlertViewModel): Observable<any> {
     return this.http.post(this.ALERT_URL + '/sendmail', sendAlert);
-  }*/
+  }
+
+  sendAlertBySms(sendAlert: SendAlertViewModel): Observable<any> {
+    return this.http.post(this.ALERT_URL + '/sendsms', sendAlert);
+  }
 
   getAlertSuggestions(): Observable<AlertSuggestion[]> {
     return this.http.get<AlertSuggestion[]>(this.ALERT_URL + '/suggestion');
@@ -126,5 +141,14 @@ export class ApiServiceService {
 
   getAlertStats(): Observable<AlertStat[]> {
     return this.http.get<AlertStat[]>(this.ALERT_URL + '/stat');
+  }
+
+  changeAlertStatus(type, id): Observable<string> {
+    return this.http.get<string>(this.ALERT_URL + '/status/' + type + '/' + id);
+  }
+
+  //USER SETTINGS
+  changeUserSettings(userSet: UserSettingsViewModel): Observable<any> {
+    return this.http.post(this.USER_SETTINGS_URL, userSet);
   }
 }

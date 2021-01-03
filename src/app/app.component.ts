@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ApiServiceService} from './shared/api-service.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,15 @@ import {Router} from '@angular/router';
 export class AppComponent {
   title = 'crisis-front';
   showFiller = true;
+  role = localStorage.getItem('role');
+  mySubscription;
   constructor(
-    public apiService: ApiServiceService) { }
+    public apiService: ApiServiceService, private router: Router, private activatedRoute: ActivatedRoute) {
+/*    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.mySubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });*/
+  }
 }

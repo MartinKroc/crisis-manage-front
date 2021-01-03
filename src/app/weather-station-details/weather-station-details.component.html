@@ -1,23 +1,23 @@
-<div class="header">
+<div class="top-container">
   <mat-list>
     <mat-divider></mat-divider>
     <mat-list-item><h3>Nazwa stacji: {{station.name}}</h3></mat-list-item>
     <mat-divider></mat-divider><br/>
   </mat-list>
-</div>
-<div class="top-container">
-  <div>
-    <app-basic-chart [lineChartData]="lineChartDataTemp" [lineChartLabels]="lineChartLabels"></app-basic-chart>
-  </div>
-  <div>
-    <app-basic-chart [lineChartData]="lineChartDataPressure" [lineChartLabels]="lineChartLabels"></app-basic-chart>
-  </div>
-  <div>
-    <app-basic-chart [lineChartData]="lineChartDataSmog" [lineChartLabels]="lineChartLabels"></app-basic-chart>
-  </div>
-  <div>
-    <app-basic-chart [lineChartData]="lineChartDataHumidity" [lineChartLabels]="lineChartLabels"></app-basic-chart>
-  </div>
+  <mat-tab-group>
+    <mat-tab label="Temperatura">
+      <app-basic-chart [lineChartData]="lineChartDataTemp" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+    </mat-tab>
+    <mat-tab label="Ciśnienie">
+      <app-basic-chart [lineChartData]="lineChartDataPressure" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+    </mat-tab>
+    <mat-tab label="Smog">
+      <app-basic-chart [lineChartData]="lineChartDataSmog" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+    </mat-tab>
+    <mat-tab label="Wilgotność">
+      <app-basic-chart [lineChartData]="lineChartDataHumidity" [lineChartLabels]="lineChartLabels"></app-basic-chart>
+    </mat-tab>
+  </mat-tab-group>
 </div>
 
 

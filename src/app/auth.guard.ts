@@ -9,12 +9,19 @@ import {ApiServiceService} from './shared/api-service.service';
 export class AuthGuard implements CanActivate {
   constructor(private apiService: ApiServiceService, private router: Router) {}
 
-  canActivate(): boolean {
-    if (this.apiService.loggedIn()) {
-      return true;
-    } else {
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    const expectedRole = route.data.expectedRole;
+    const role = localStorage.getItem('role');
+    if (
+      !this.apiService.loggedIn() ||
+      role !== expectedRole
+    ) {
+      if (role === 'ROLE_EMPLOYEE') {
+        return true;
+      }
       this.router.navigate(['']);
       return false;
     }
+    return true;
   }
 }

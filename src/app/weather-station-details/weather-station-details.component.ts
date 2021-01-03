@@ -55,11 +55,22 @@ export class WeatherStationDetailsComponent implements OnInit {
       res => {
         this.measures = res;
         this.measures.forEach((el) => {
+          const temp3 = new Date(Date.parse(el.date));
+          const temp = el.date.slice(0, 10);
+          let hh: string = temp3.getHours().toString();
+          let mm: string = temp3.getMinutes().toString();
+          if (temp3.getHours() < 10) {
+            hh = '0' + temp3.getHours().toString();
+          }
+          if (temp3.getMinutes() < 10) {
+            mm = '0' + temp3.getMinutes().toString();
+          }
+          const temp2 = `${temp}, ${hh}:${mm}`;
           this.chartDataTemp.push(el.temp);
           this.chartDataPressure.push(el.pressure);
           this.chartDataSmog.push(el.smogLevel);
           this.chartDataHumidity.push(el.humidity);
-          this.chartLabels.push(el.date);
+          this.chartLabels.push(temp2);
         });
         this.lineChartDataTemp = [
           { data: this.chartDataTemp, label: 'Temperatura' }

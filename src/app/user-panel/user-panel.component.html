@@ -1,9 +1,76 @@
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
-  <agm-marker *ngFor="let cord of alertPropositions" [latitude]="cord.lat" [longitude]="cord.lng" (markerClick)="showDetails(cord)">
-    <agm-info-window>
-      <h3>{{cord.description}}</h3>
-    </agm-info-window>
-  </agm-marker>
-</agm-map>
-<app-alert-propositions-table [alerts]="alertPropositions"></app-alert-propositions-table>
-<button mat-button (click)="addProposition()">Dodaj propozycję</button>
+<div class="top-container">
+  <div class="single-alert">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ostrzeżenia meteorologiczne
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <div *ngFor="let alert of alertsList.weatherAlert">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-subtitle>Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              Uwaga, zgłoszono zagrożenie w miejscu: {{alert.weatherStationName}}<br/>
+              Opis: {{alert.description}}<br/>
+              Status: {{alert.active | showStatus}}
+            </mat-card-content>
+          </mat-card>
+        </div>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ostrzeżenia hydrologiczne
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngFor="let alert of alertsList.waterAlert">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Uwaga, zgłoszono zagrożenie w miejscu: {{alert.waterStationName}}<br/>
+            Opis: {{alert.description}}<br/>
+            Status: {{alert.active | showStatus}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Pozostałe ostrzeżenia
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+        <agm-marker *ngFor="let cord of alertsList.alerts" [latitude]="cord.lat" [longitude]="cord.lng">
+          <agm-info-window>
+            <h3>{{cord.dangerDescription}}</h3>
+            <h3>{{cord.description}}</h3>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+      <br/>
+      <div *ngFor="let alert of alertsList.alerts">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-subtitle>Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Rodzaj zagrożenia: {{alert.dangerDescription}}<br/>
+            Opis: {{alert.description}}<br/>
+            Status: {{alert.active | showStatus}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  </div>
+</div>
