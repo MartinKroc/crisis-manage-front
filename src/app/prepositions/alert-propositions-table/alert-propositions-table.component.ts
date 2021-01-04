@@ -14,7 +14,7 @@ import {AlertProposition} from '../../models/alertproposition';
 })
 export class AlertPropositionsTableComponent implements OnInit, AfterViewInit {
   public dataSource: any;
-  displayedColumns: string[] = ['dangerTypeName', 'opis', 'accepted', 'points', 'akceptuj', 'dodaj'];
+  displayedColumns: string[] = ['dangerTypeName', 'opis', 'accepted', 'points', 'username', 'akceptuj', 'dodaj'];
   role = localStorage.getItem('role');
   @ViewChild(MatSort) sort: MatSort;
   constructor(public apiService: ApiServiceService, public dialog: MatDialog) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {SignupViewModel} from '../signup/signup.component';
 import {WaterStation} from '../models/waterstation';
 import {SignInViewModel} from '../signin/signin.component';
@@ -36,7 +36,21 @@ export class ApiServiceService {
   private ALERT_URL = this.BASE_URL + '/api/alert';
   private USER_SETTINGS_URL = this.BASE_URL + '/api/user/settings';
   public showmenu = true;
-  constructor(private http: HttpClient, private router: Router) { }
+
+  private userSubject: BehaviorSubject<UserModel>;
+  public user: Observable<UserModel>;
+
+  constructor(private http: HttpClient, private router: Router) {
+    this.userSubject = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem('user')));
+    this.user = this.userSubject.asObservable();
+  }
+
+  public get userValue(): UserModel {
+    return this.userSubject.value;
+  }
+  public setUserValue(usr: UserModel): void {
+    this.userSubject.next(usr);
+  }
 
   // AUTH
   signUp(user: SignupViewModel): Observable<any> {
@@ -60,6 +74,8 @@ export class ApiServiceService {
   }
 
   logoutUser() {
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     this.showmenu = false;
@@ -147,8 +163,10 @@ export class ApiServiceService {
     return this.http.get<string>(this.ALERT_URL + '/status/' + type + '/' + id);
   }
 
-  //USER SETTINGS
+  // USER SETTINGS
   changeUserSettings(userSet: UserSettingsViewModel): Observable<any> {
     return this.http.post(this.USER_SETTINGS_URL, userSet);
   }
+
+
 }

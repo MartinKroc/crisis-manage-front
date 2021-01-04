@@ -4,20 +4,22 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Ostrzeżenia meteorologiczne
+          <mat-icon aria-hidden="false" aria-label="Example home icon">cloud</mat-icon> Ostrzeżenia meteorologiczne
         </mat-panel-title>
       </mat-expansion-panel-header>
         <div *ngFor="let alert of alertsList.weatherAlert">
           <mat-card>
             <mat-card-header>
-              <mat-card-subtitle>Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
+              <mat-card-subtitle><mat-icon aria-hidden="false" aria-label="Example home icon">error_outline</mat-icon> Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-              Uwaga, zgłoszono zagrożenie w miejscu: {{alert.weatherStationName}}<br/>
+              <h3 style="color: #EF233C">Uwaga, zgłoszono zagrożenie w miejscu: {{alert.weatherStationName}}</h3>
+              <mat-divider></mat-divider><br/>
               Opis: {{alert.description}}<br/>
               Status: {{alert.active | showStatus}}
             </mat-card-content>
           </mat-card>
+          <br/>
         </div>
     </mat-expansion-panel>
 
@@ -25,20 +27,22 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Ostrzeżenia hydrologiczne
+          <mat-icon aria-hidden="false" aria-label="Example home icon">waves</mat-icon> Ostrzeżenia hydrologiczne
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div *ngFor="let alert of alertsList.waterAlert">
         <mat-card>
           <mat-card-header>
-            <mat-card-subtitle>Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
+            <mat-card-subtitle><mat-icon aria-hidden="false" aria-label="Example home icon">error_outline</mat-icon> Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            Uwaga, zgłoszono zagrożenie w miejscu: {{alert.waterStationName}}<br/>
+            <h3 style="color: #EF233C">Uwaga, zgłoszono zagrożenie w miejscu: {{alert.waterStationName}}</h3>
+            <mat-divider></mat-divider><br/>
             Opis: {{alert.description}}<br/>
             Status: {{alert.active | showStatus}}
           </mat-card-content>
         </mat-card>
+        <br/>
       </div>
     </mat-expansion-panel>
 
@@ -46,10 +50,10 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Pozostałe ostrzeżenia
+          <mat-icon aria-hidden="false" aria-label="Example home icon">local_fire_department</mat-icon> Pozostałe ostrzeżenia
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="9">
         <agm-marker *ngFor="let cord of alertsList.alerts" [latitude]="cord.lat" [longitude]="cord.lng">
           <agm-info-window>
             <h3>{{cord.dangerDescription}}</h3>
@@ -61,14 +65,16 @@
       <div *ngFor="let alert of alertsList.alerts">
         <mat-card>
           <mat-card-header>
-            <mat-card-subtitle>Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
+            <mat-card-subtitle><mat-icon aria-hidden="false" aria-label="Example home icon">error_outline</mat-icon> Zgłoszono: {{alert.publishDate | date:"dd/MM/yyyy, hh:mm"}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            Rodzaj zagrożenia: {{alert.dangerDescription}}<br/>
+            <h3 style="color: #EF233C">Uwaga, zgłoszono: {{alert.dangerDescription}}</h3>
+            <mat-divider></mat-divider><br/>
             Opis: {{alert.description}}<br/>
             Status: {{alert.active | showStatus}}
           </mat-card-content>
         </mat-card>
+        <br/>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

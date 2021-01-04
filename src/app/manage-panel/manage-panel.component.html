@@ -4,21 +4,24 @@
   </div>
 </div>
 <br/>
+<div class="top-container">
+  <div class="alert-sug">
+    <div class="names">
+      <h2 style="color: #EF233C"><mat-icon aria-hidden="false" aria-label="Example home icon">list_alt</mat-icon> Powiadomienia ze stacji pomiarowych</h2>
+    </div>
+    <app-alert-suggestions-list></app-alert-suggestions-list>
+  </div>
+</div>
+<br/>
   <div class="top-container">
-    <h2>Statystyki</h2>
+    <h2 style="color: #EF233C"><mat-icon aria-hidden="false" aria-label="Example home icon">equalizer</mat-icon> Statystyki</h2>
     <div class="bar">
       <app-bar-chart [barChartData]="barChartData" [barChartLabels]="barChartLabels"></app-bar-chart>
     </div>
     <div class="top-propositions">
     </div>
   </div>
-<br/>
-  <div class="top-container">
-    <div class="alert-sug">
-      <h2>Powiadomienia ze stacji pomiarowych</h2>
-      <app-alert-suggestions-list></app-alert-suggestions-list>
-    </div>
-  </div>
+
 
 
 

@@ -5,3 +5,7 @@ table {
   display: flex;
   justify-content: space-between;
 }
+.names {
+  display: flex;
+  justify-content: center;
+}

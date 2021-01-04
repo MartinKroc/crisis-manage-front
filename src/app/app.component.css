@@ -1,18 +1,30 @@
-/*.example-container {
-  background-color: #744fbd;
-}*/
 .example-container {
   position: absolute;
-  background-color: #744fbd;
+  background-color: #EDF2F4;
   top: 60px;
   bottom: 0px;
   left: 0;
   right: 0;
 }
 .example-sidenav {
-  padding: 20px;
+  background-color: #2B2D42;
+  color: #EDF2F4;
   height: 100vh;
+  -webkit-box-shadow: 3px 5px 11px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow:    3px 5px 11px 0px rgba(50, 50, 50, 0.3);
+  box-shadow:         3px 5px 11px 0px rgba(50, 50, 50, 0.3);
 }
 a {
   text-decoration: none;
+  color: #EDF2F4;
+}
+mat-list-item {
+  margin-top: 3px;
+}
+mat-list-item:hover {
+  background-color: #EF233C;
+}
+.top-div {
+  background-color: #2B2D42;
+  color: #EDF2F4;
 }

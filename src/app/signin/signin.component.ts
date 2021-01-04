@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiServiceService} from '../shared/api-service.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {ShareAlertDialogComponent} from '../manage-panel/share-alert-dialog/share-alert-dialog.component';
 import {ErrorDialogComponent} from '../error-dialog/error-dialog.component';
+import {first, map} from 'rxjs/operators';
+import {UserModel} from '../models/usermodel';
 
 @Component({
   selector: 'app-signin',
@@ -18,26 +20,27 @@ export class SigninComponent implements OnInit {
   };
   loginErrorUsername = false;
   loginErrorPassword = false;
-
+  usr: UserModel;
   constructor(
     private apiService: ApiServiceService,
     private router: Router,
+    private route: ActivatedRoute,
     public dialog: MatDialog
-    ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.apiService.showmenu = false;
   }
+
   validateForm(): void {
     this.loginErrorPassword = false;
     this.loginErrorUsername = false;
     if (this.model.username === '') {
       this.loginErrorUsername = true;
-    }
-    else if (this.model.password === '') {
+    } else if (this.model.password === '') {
       this.loginErrorPassword = true;
-    }
-    else {
+    } else {
       this.Signin();
     }
   }
@@ -51,10 +54,15 @@ export class SigninComponent implements OnInit {
             console.log(resp);
             // @ts-ignore
             localStorage.setItem('role', resp.roles[0]);
+            this.usr = resp;
+            // @ts-ignore
+            this.usr.role = resp.roles[0];
+            this.usr.token = localStorage.getItem('token');
+            localStorage.setItem('user', JSON.stringify(this.usr));
+            this.apiService.setUserValue(this.usr);
             if (localStorage.getItem('role') === 'ROLE_EMPLOYEE') {
               this.router.navigate(['/panel']);
-            }
-            else {
+            } else {
               this.router.navigate(['/user']);
             }
           },

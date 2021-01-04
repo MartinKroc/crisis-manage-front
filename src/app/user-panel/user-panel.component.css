@@ -1,10 +1,11 @@
 .top-container {
-  background-color: aliceblue;
+  background-color: #2B2D42;
   margin: 0;
   display: flex;
   justify-content: space-evenly;
-  -webkit-box-shadow: 8px 8px 13px -5px #000000;
-  box-shadow: 8px 8px 13px -5px #000000;
+  -webkit-box-shadow: 3px 5px 11px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow:    3px 5px 11px 0px rgba(50, 50, 50, 0.3);
+  box-shadow:         3px 5px 11px 0px rgba(50, 50, 50, 0.3);
 }
 .single-alert {
   width: 100%;
@@ -12,4 +13,7 @@
 agm-map {
   height: 300px;
   width: 800px;
+  -webkit-box-shadow: 3px 5px 11px 0px rgba(50, 50, 50, 0.3);
+  -moz-box-shadow:    3px 5px 11px 0px rgba(50, 50, 50, 0.3);
+  box-shadow:         3px 5px 11px 0px rgba(50, 50, 50, 0.3);
 }

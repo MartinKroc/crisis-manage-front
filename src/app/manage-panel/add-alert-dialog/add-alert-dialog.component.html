@@ -9,7 +9,7 @@
       </mat-select>
     </mat-form-field>
     <div *ngIf="model.dangerTypeId==1">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" style="min-width: 500px">
         <mat-label>Opis</mat-label>
         <input  matInput type="text"
                 id="descriptionWater"
@@ -32,7 +32,7 @@
       <button mat-raised-button type="submit">Dodaj</button>
     </div>
     <div *ngIf="model.dangerTypeId==2 || model.dangerTypeId==3 || model.dangerTypeId==5">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" style="min-width: 500px">
         <mat-label>Opis</mat-label>
         <input  matInput type="text"
                 id="descriptionWeather"
@@ -56,8 +56,8 @@
     </div>
     <div *ngIf="model.dangerTypeId==4 || model.dangerTypeId==6">
       <app-google-map (pointedLat)="setLat($event)" (pointedLng)="setLng($event)">
-      </app-google-map>
-      <mat-form-field appearance="fill">
+      </app-google-map><br/>
+      <mat-form-field appearance="fill" style="min-width: 500px">
         <mat-label>Opis</mat-label>
         <input  matInput type="text"
                 id="descriptionOther"
@@ -70,15 +70,5 @@
       <br>
       <button mat-raised-button type="submit">Dodaj</button>
     </div>
-<!--    <mat-form-field appearance="fill">
-      <mat-label>Opis</mat-label>
-      <input  matInput type="text"
-              id="description"
-              class="form-control"
-              name="name"
-              placeholder="name"
-              [(ngModel)]="model.description"
-              required/>
-    </mat-form-field>-->
   </form>
 </div>

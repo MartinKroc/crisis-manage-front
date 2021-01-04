@@ -63,7 +63,7 @@ export class StationDetailsComponent implements OnInit {
           this.chartLabels.push(temp2);
         });
         this.lineChartData = [
-          { data: this.chartData, label: 'Poziom wody' }
+          { data: this.chartData, label: 'Poziom wody (mm)' }
         ];
         this.lineChartLabels = this.chartLabels;
       },

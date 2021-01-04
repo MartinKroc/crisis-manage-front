@@ -52,6 +52,8 @@ import { ShowStatusPipe } from './shared/pipes/show-status.pipe';
 import { ShowVerificationPipe } from './shared/pipes/show-verification.pipe';
 import { AlertTypesPipe } from './shared/pipes/alert-types.pipe';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ColorizeDirective } from './shared/directives/colorize.directive';
+import { ColoredPipe } from './shared/pipes/colored.pipe';
 
 
 @NgModule({
@@ -81,7 +83,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     PrepositionsComponent,
     ShowStatusPipe,
     ShowVerificationPipe,
-    AlertTypesPipe
+    AlertTypesPipe,
+    ColorizeDirective,
+    ColoredPipe
   ],
   entryComponents: [AddPropositionDialogComponent, AddAlertDialogComponent, ShareAlertDialogComponent, ErrorDialogComponent],
     imports: [

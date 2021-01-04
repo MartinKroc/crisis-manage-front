@@ -2,6 +2,7 @@
   <agm-marker *ngFor="let cord of alertPropositions" [latitude]="cord.lat" [longitude]="cord.lng" (markerClick)="showDetails(cord)">
     <agm-info-window>
       <h3>{{cord.description}}</h3>
+      <p>{{cord.dangerTypeName}}</p>
     </agm-info-window>
   </agm-marker>
 </agm-map>

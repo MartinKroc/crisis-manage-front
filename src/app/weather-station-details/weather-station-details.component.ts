@@ -73,16 +73,16 @@ export class WeatherStationDetailsComponent implements OnInit {
           this.chartLabels.push(temp2);
         });
         this.lineChartDataTemp = [
-          { data: this.chartDataTemp, label: 'Temperatura' }
+          { data: this.chartDataTemp, label: 'Temperatura (C)' }
         ];
         this.lineChartDataPressure = [
-          { data: this.chartDataPressure, label: 'Ciśnienie' }
+          { data: this.chartDataPressure, label: 'Ciśnienie (hPa)' }
         ];
         this.lineChartDataSmog = [
-          { data: this.chartDataSmog, label: 'Smog' }
+          { data: this.chartDataSmog, label: 'Poziom smogu' }
         ];
         this.lineChartDataHumidity = [
-          { data: this.chartDataHumidity, label: 'Wilgotność' }
+          { data: this.chartDataHumidity, label: 'Wilgotność (%)' }
         ];
         this.lineChartLabels = this.chartLabels;
       },

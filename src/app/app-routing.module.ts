@@ -12,6 +12,7 @@ import {WeatherStationDetailsComponent} from './weather-station-details/weather-
 import {AuthGuard} from './auth.guard';
 import {UserSettingsComponent} from './user-settings/user-settings.component';
 import {PrepositionsComponent} from './prepositions/prepositions.component';
+import {Role} from './models/role';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
     component: ManagePanelComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_EMPLOYEE'
+      Roles: [Role.Employee]
     }
   },
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
     component: StationsComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_EMPLOYEE'
+      Roles: [Role.Employee]
     }
   },
   {
@@ -48,7 +49,7 @@ const routes: Routes = [
     component: StationDetailsComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_EMPLOYEE'
+      Roles: [Role.Employee]
     }
   },
   {
@@ -56,7 +57,7 @@ const routes: Routes = [
     component: WeatherStationDetailsComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_EMPLOYEE'
+      Roles: [Role.Employee]
     }
   },
   {
@@ -64,7 +65,7 @@ const routes: Routes = [
     component: UserPanelComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_USER'
+      Roles: [Role.User]
     }
   },
   {
@@ -77,7 +78,7 @@ const routes: Routes = [
     component: UserSettingsComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_USER'
+      Roles: [Role.User]
     }
   },
   {
@@ -85,8 +86,8 @@ const routes: Routes = [
     component: PrepositionsComponent,
     canActivate: [AuthGuard],
     data: {
-      expectedRole: 'ROLE_USER'
-    },
+      Roles: [Role.User]
+    }
   }
 ];
 

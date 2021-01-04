@@ -29,6 +29,7 @@ export class AlertSuggestionsListComponent implements AfterViewInit, OnInit {
   public getAlertsSuggestions(): void {
     this.apiService.getAlertSuggestions().subscribe(
       res => {
+        console.log(res);
         this.dataSource = new MatTableDataSource<AlertSuggestion>(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

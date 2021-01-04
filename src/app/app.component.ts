@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {ApiServiceService} from './shared/api-service.service';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserModel} from './models/usermodel';
+import {Role} from './models/role';
 
 @Component({
   selector: 'app-root',
@@ -11,14 +13,12 @@ export class AppComponent {
   title = 'crisis-front';
   showFiller = true;
   role = localStorage.getItem('role');
-  mySubscription;
+  user: UserModel;
   constructor(
     public apiService: ApiServiceService, private router: Router, private activatedRoute: ActivatedRoute) {
-/*    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.mySubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.router.navigated = false;
-      }
-    });*/
+    this.apiService.user.subscribe(x => this.user = x);
+  }
+  get isEmployee() {
+    return this.user && this.user.role === Role.Employee;
   }
 }

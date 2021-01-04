@@ -1,31 +1,38 @@
-<mat-toolbar>
+<div *ngIf="!user">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="user">
+  <mat-toolbar class="top-div">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-  <span>Centrum zarządzania antykryzysowego</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
+    <span>Centrum zarządzania antykryzysowego</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
   <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="side" opened class="example-sidenav"
                  [fixedInViewport]="false" [fixedTopGap]="0"
                  [fixedBottomGap]="0">
-      <div *ngIf="apiService.loggedIn()">
+
       <mat-list>
-        <mat-list-item *ngIf="role === 'ROLE_USER'"><a routerLink="user">Panel użytkownika</a></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item *ngIf="role === 'ROLE_EMPLOYEE'"><a routerLink="panel">Panel pracownika</a></mat-list-item>
+        <mat-list-item><a routerLink="user"><mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon> Panel użytkownika</a></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item *ngIf="role === 'ROLE_EMPLOYEE'"><a routerLink="stations">Stacje Pogodowe</a></mat-list-item>
+        <mat-list-item *ngIf="isEmployee"><a routerLink="panel"><mat-icon aria-hidden="false" aria-label="Example home icon">assignment_ind</mat-icon> Panel pracownika</a><mat-divider></mat-divider></mat-list-item>
+        <mat-list-item *ngIf="isEmployee"><a routerLink="stations"><mat-icon aria-hidden="false" aria-label="Example home icon">place</mat-icon> Stacje Pogodowe</a><mat-divider></mat-divider></mat-list-item>
+        <mat-list-item><a routerLink="user/settings"><mat-icon aria-hidden="false" aria-label="Example home icon">build</mat-icon> Ustawienia profilu/powiadomień</a></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item *ngIf="role === 'ROLE_USER'"><a routerLink="user/settings">Ustawienia profilu/powiadomień</a></mat-list-item>
+        <mat-list-item><a routerLink="prepositions"><mat-icon aria-hidden="false" aria-label="Example home icon">warning</mat-icon> Propozycje ostrzeżeń</a></mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item *ngIf="role === 'ROLE_USER' || role === 'ROLE_EMPLOYEE'"><a routerLink="prepositions">Propozycje ostrzeżeń</a></mat-list-item>
         <mat-list-item><a *ngIf="apiService.loggedIn()" routerLink="" (click)="apiService.logoutUser()">Wyloguj się</a></mat-list-item>
+        <mat-divider></mat-divider>
       </mat-list>
-      </div>
+
     </mat-sidenav>
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>
 

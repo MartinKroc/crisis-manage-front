@@ -1,11 +1,13 @@
 <div class="top-container">
   <div>
     <mat-list>
-      <mat-list-item>Nazwa stacji: {{station.name}}</mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item>Poziom wody - zagrożenie wylaniem: {{station.warningLevel}}</mat-list-item>
+      <mat-list-item><span style="color: #EF233C">Nazwa stacji: </span> {{station.name}}</mat-list-item>
       <mat-divider></mat-divider>
-      <mat-list-item>Poziom wody - poziom krytyczny: {{station.alertLevel}}</mat-list-item>
+      <mat-list-item><span style="color: #EF233C">Poziom wody - zagrożenie wylaniem: </span> {{station.warningLevel}} mm</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item><span style="color: #EF233C">Poziom wody - poziom krytyczny: </span> {{station.alertLevel}} mm</mat-list-item>
+      <mat-divider></mat-divider>
     </mat-list>
   </div>
   <div class="logo">

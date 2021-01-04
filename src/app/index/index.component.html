@@ -1,10 +1,22 @@
-<div class="top-container">
-  <div class="logo">
-    <img src="assets/logo.svg">
-  </div>
-  <div class="login">
-    <app-signin></app-signin>
-  </div>
+<div class="index-page">
+    <div class="logo">
+      <div class="im">
+        <img src="assets/logo.svg">
+      </div>
+      <div>
+        <h2>Centrum<br/>Zarządzania<br/>Antykryzysowego</h2>
+      </div>
+    </div>
+    <div class="login">
+      <mat-tab-group animationDuration="1200ms">
+        <mat-tab label="Zaloguj">
+          <app-signin></app-signin>
+        </mat-tab>
+        <mat-tab label="Zarejestruj">
+          <app-signup></app-signup>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
 </div>
 
 
