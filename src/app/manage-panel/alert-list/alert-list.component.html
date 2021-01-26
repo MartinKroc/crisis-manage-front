@@ -24,7 +24,7 @@
       </ng-container>
       <ng-container matColumnDef="active">
         <th mat-header-cell *matHeaderCellDef> Aktywne </th>
-        <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button mat-raised-button color="warn" (click)="changeAlertStatus('WEATHER', alert.id)">Zmień</button></td>
+        <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button *ngIf="alert.active" mat-raised-button color="warn" (click)="changeAlertStatus('WEATHER', alert.id)">Zmień</button></td>
       </ng-container>
       <ng-container matColumnDef="send">
         <th mat-header-cell *matHeaderCellDef>  </th>
@@ -59,7 +59,7 @@
       </ng-container>
       <ng-container matColumnDef="active">
         <th mat-header-cell *matHeaderCellDef> Aktywne </th>
-        <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button mat-raised-button color="warn" (click)="changeAlertStatus('WATER', alert.id)">Zmień</button></td>
+        <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button *ngIf="alert.active" mat-raised-button color="warn" (click)="changeAlertStatus('WATER', alert.id)">Zmień</button></td>
       </ng-container>
       <ng-container matColumnDef="send">
         <th mat-header-cell *matHeaderCellDef>  </th>
@@ -94,7 +94,7 @@
       </ng-container>
       <ng-container matColumnDef="active">
         <th mat-header-cell *matHeaderCellDef> Aktywne </th>
-        <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button mat-raised-button color="warn" (click)="changeAlertStatus('OTHER', alert.id)">Zmień</button></td>
+        <td mat-cell *matCellDef="let alert"> {{alert.active | showVerification}} <button *ngIf="alert.active" mat-raised-button color="warn" (click)="changeAlertStatus('OTHER', alert.id)">Zmień</button></td>
       </ng-container>
       <ng-container matColumnDef="send">
         <th mat-header-cell *matHeaderCellDef>  </th>

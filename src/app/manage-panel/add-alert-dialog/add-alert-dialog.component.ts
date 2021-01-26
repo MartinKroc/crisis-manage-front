@@ -7,6 +7,7 @@ import {ApiServiceService} from '../../shared/api-service.service';
   styleUrls: ['./add-alert-dialog.component.css']
 })
 export class AddAlertDialogComponent implements OnInit {
+  towns: string[] = ['Całe Województwo', 'Kielce', 'Skarżysko-Kamienna', 'Ostrowiec-Świętokrzyski', 'Chęciny', 'Jędrzejów', 'Strawczyn', 'Umer', 'Końskie', 'Staszów', 'Łopuszno'];
   dangerTypes;
   waterStations;
   weatherStations;
@@ -17,7 +18,8 @@ export class AddAlertDialogComponent implements OnInit {
     dangerTypeId: 1,
     waterStationId: 1,
     lat: 1,
-    lng: 1
+    lng: 1,
+    town: ''
   };
 
   constructor(private apiService: ApiServiceService) {
@@ -90,4 +92,5 @@ export interface AlertViewModel {
   waterStationId: number;
   lat: number;
   lng: number;
+  town: string;
 }

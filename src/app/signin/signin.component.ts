@@ -52,11 +52,23 @@ export class SigninComponent implements OnInit {
         this.apiService.getUser().subscribe(
           resp => {
             console.log(resp);
-            // @ts-ignore
-            localStorage.setItem('role', resp.roles[0]);
+            if (resp.roles.length > 1) {
+              // @ts-ignore
+              localStorage.setItem('role', 'ROLE_EMPLOYEE');
+            }
+            else {
+              // @ts-ignore
+              localStorage.setItem('role', resp.roles[0]);
+            }
             this.usr = resp;
-            // @ts-ignore
-            this.usr.role = resp.roles[0];
+            if (resp.roles.length > 1) {
+              // @ts-ignore
+              this.usr.role = 'ROLE_EMPLOYEE';
+            }
+            else {
+              // @ts-ignore
+              this.usr.role = resp.roles[0];
+            }
             this.usr.token = localStorage.getItem('token');
             localStorage.setItem('user', JSON.stringify(this.usr));
             this.apiService.setUserValue(this.usr);

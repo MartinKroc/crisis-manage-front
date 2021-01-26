@@ -5,6 +5,7 @@
     <p *ngIf="passwordError" style="color: red;">Podaj hasło</p>
     <p *ngIf="emailError" style="color: red;">Podaj email</p>
     <p *ngIf="phoneError" style="color: red;">Podaj numer telefonu</p>
+    <p *ngIf="townError" style="color: red;">Wybierz miasto</p>
     <form name="form" class="example-form" (submit)="validateForm()">
       <mat-form-field appearance="fill">
         <mat-label>Nazwa użytkownika</mat-label>
@@ -50,6 +51,19 @@
                 required/>
       </mat-form-field>
       <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Miasto</mat-label>
+        <mat-select [(ngModel)]="model.town" name="town">
+          <mat-option *ngFor="let town of towns" [value]="town">
+            {{town}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br/>
+      <section class="example-section">
+        <mat-checkbox class="example-margin" [(ngModel)]="model.isEmployee" name="isEmployee">Zarejestruj jako Pracownik (w celach testów)</mat-checkbox>
+      </section>
+      <br/>
       <button mat-raised-button type="submit">Potwierdź</button>
     </form>
   </div>

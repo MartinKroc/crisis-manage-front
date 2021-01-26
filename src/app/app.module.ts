@@ -3,13 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DemoComponent } from './demo/demo.component';
 import { IndexComponent } from './index/index.component';
 import { ManagePanelComponent } from './manage-panel/manage-panel.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { StationsComponent } from './stations/stations.component';
-import { UserAlertComponent } from './user-alert/user-alert.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthGuard} from './auth.guard';
@@ -54,18 +52,17 @@ import { AlertTypesPipe } from './shared/pipes/alert-types.pipe';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ColorizeDirective } from './shared/directives/colorize.directive';
 import { ColoredPipe } from './shared/pipes/colored.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoComponent,
     IndexComponent,
     ManagePanelComponent,
     SigninComponent,
     SignupComponent,
     StationsComponent,
-    UserAlertComponent,
     UserPanelComponent,
     BasicChartComponent,
     GoogleMapComponent,
@@ -112,6 +109,7 @@ import { ColoredPipe } from './shared/pipes/colored.pipe';
         MatCardModule,
         MatExpansionModule,
         MatTabsModule,
+        MatCheckboxModule,
         ChartsModule,
         AgmCoreModule.forRoot({
             apiKey: ''

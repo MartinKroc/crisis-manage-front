@@ -11,27 +11,32 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  towns: string[] = ['Całe Województwo', 'Kielce', 'Skarżysko-Kamienna', 'Ostrowiec-Świętokrzyski', 'Chęciny', 'Jędrzejów', 'Strawczyn', 'Umer', 'Końskie', 'Staszów', 'Łopuszno'];
   model: SignupViewModel = {
     username: '',
     password: '',
     phone: '',
-    email: ''
+    town: '',
+    email: '',
+    isEmployee: false
   };
   usernameError = false;
   emailError = false;
   phoneError = false;
   passwordError = false;
+  townError = false;
   constructor(private apiService: ApiServiceService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   validateForm(): void {
+    console.log(this.model);
     this.usernameError = false;
     this.passwordError = false;
     this.phoneError = false;
     this.emailError = false;
+    this.townError = false;
     if (this.model.username === '') {
       this.usernameError = true;
     }
@@ -44,6 +49,9 @@ export class SignupComponent implements OnInit {
     else if (this.model.email === '') {
       this.emailError = true;
     }
+    else if (this.model.town === '') {
+      this.townError = true;
+    }
     else {
       this.Signup();
     }
@@ -52,9 +60,15 @@ export class SignupComponent implements OnInit {
   Signup(): void {
     this.apiService.signUp(this.model).subscribe(
       res => {
+        this.dialog.open(ErrorDialogComponent, {
+          data: {alert: 'Zarejestrowano pomyślnie'}
+        });
         this.router.navigate(['/']);
       },
       err => {
+        this.dialog.open(ErrorDialogComponent, {
+          data: {alert: 'Zarejestrowano'}
+        });
         this.router.navigate(['/']);
       }
     );
@@ -67,5 +81,7 @@ export interface SignupViewModel {
   username: string;
   password: string;
   phone: string;
+  town: string;
   email: string;
+  isEmployee: boolean;
 }

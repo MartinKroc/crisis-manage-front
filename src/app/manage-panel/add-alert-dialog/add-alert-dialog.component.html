@@ -68,6 +68,15 @@
                 required/>
       </mat-form-field>
       <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Miasto</mat-label>
+        <mat-select [(ngModel)]="model.town" name="townadd">
+          <mat-option *ngFor="let town of towns" [value]="town">
+            {{town}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
       <button mat-raised-button type="submit">Dodaj</button>
     </div>
   </form>

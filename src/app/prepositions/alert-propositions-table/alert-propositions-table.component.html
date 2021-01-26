@@ -22,7 +22,7 @@
   </ng-container>
   <ng-container matColumnDef="akceptuj">
     <th mat-header-cell *matHeaderCellDef></th>
-    <td mat-cell *matCellDef="let alert"><button mat-button color="primary" *ngIf="role === 'ROLE_EMPLOYEE'" (click)="acceptProposition(alert.alertId)"> Zaakceptuj </button></td>
+    <td mat-cell *matCellDef="let alert"><button mat-button color="primary" *ngIf="role === 'ROLE_EMPLOYEE' && !alert.accepted" (click)="acceptProposition(alert.alertId)"> Zaakceptuj </button></td>
   </ng-container>
   <ng-container matColumnDef="dodaj">
     <th mat-header-cell *matHeaderCellDef><button mat-raised-button color="primary" *ngIf="role === 'ROLE_USER'" (click)="addProposition()">Dodaj propozycję</button></th>

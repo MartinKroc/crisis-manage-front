@@ -9,10 +9,11 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./user-settings.component.css']
 })
 export class UserSettingsComponent implements OnInit {
-
+  towns: string[] = ['Całe Województwo', 'Kielce', 'Skarżysko-Kamienna', 'Ostrowiec-Świętokrzyski', 'Chęciny', 'Jędrzejów', 'Strawczyn', 'Umer', 'Końskie', 'Staszów', 'Łopuszno'];
 model: UserSettingsViewModel = {
   email: '',
-  phone: ''
+  phone: '',
+  town: ''
 };
   errorEmail = false;
   errorPhone = false;
@@ -52,4 +53,5 @@ model: UserSettingsViewModel = {
 export interface UserSettingsViewModel {
   email: string;
   phone: string;
+  town: string;
 }
